@@ -45,15 +45,13 @@ bool spriteOverlaps(int sprite, int cycle)
     return false;
 }
 
-int main()
-{
+int main() {
     std::ifstream inputFile("input.txt");
 
     std::vector<std::string> rows;
     std::string row;
 
-    while (getline(inputFile, row))
-    {
+    while (getline(inputFile, row)) {
         rows.push_back(row);
     }
 
@@ -63,14 +61,12 @@ int main()
     std::vector<std::vector<char>> grid(6, std::vector<char>(40, ' '));
     int gridRow = 0;
 
-    for (auto row : rows)
-    {
+    for (auto row : rows) {
         auto tokens = tokenize(row, ' ');
 
         std::string instruction = tokens[0];
 
-        if (instruction == "noop")
-        {
+        if (instruction == "noop") {
 
             spriteOverlaps(x, cycleNumber) ? 
                 grid[gridRow][cycleNumber % 40] = '#' : 
@@ -78,8 +74,7 @@ int main()
 
             printGrid(grid);
             cycleNumber++;
-            if (cycleNumber % 40 == 0)
-            {
+            if (cycleNumber % 40 == 0){
                 gridRow++;
             }
 
@@ -88,9 +83,8 @@ int main()
                     grid[gridRow][cycleNumber % 40] = '.';
             
             printGrid(grid);
-        }
-        else
-        {
+            
+        } else {
             int val = std::stoi(tokens[1]);
 
             spriteOverlaps(x, cycleNumber) ? 
@@ -99,8 +93,7 @@ int main()
 
             printGrid(grid);
             cycleNumber++;
-            if (cycleNumber % 40 == 0)
-            {
+            if (cycleNumber % 40 == 0) {
                 gridRow++;
             }
 
@@ -112,8 +105,7 @@ int main()
 
             printGrid(grid);
             cycleNumber++;
-            if (cycleNumber % 40 == 0)
-            {
+            if (cycleNumber % 40 == 0) {
                 gridRow++;
             }
         }
